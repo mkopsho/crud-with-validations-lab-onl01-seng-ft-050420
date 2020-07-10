@@ -1,0 +1,26 @@
+<h1>Songs Index</h1>
+<%= link_to "Create New Song", new_song_path %><br>
+<table> <!-- https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics -->
+  <tr>
+    <th>Title</th>
+    <th>Released?</th>
+    <th>Release Year</th>
+    <th>Artist Name</th>
+    <th>Genre</th>
+  </tr>
+
+  <% @songs.each do |song| %>
+    <tbody>
+      <tr>
+        <td><%= song.title %></td>
+        <td><%= song.released %></td>
+        <td><%= song.release_year %></td>
+        <td><%= song.artist_name %></td>
+        <td><%= song.genre %></td>
+        <td><%= link_to "Show", song_path(song) %></td>
+        <td><%= link_to "Edit", edit_song_path(song) %></td>
+        <td><%= link_to "Delete", song_path(song), method: :delete, data: { confirm: "Delete this song?" } %></td>
+      </tbody>
+    </tr>
+  <% end %>
+</table>
